@@ -26,9 +26,18 @@
       max-width: 100%;
     }
   </style>
+    <script>
 <title>M3U8 Player running...</title></head>
 <body>
- 
+ $(window).on('load', function () {
+    $('#m3u8-placeholder')[0].value = localStorage.getItem('m3u8-link') || '';
+    $('#play-btn').on('click', function () {
+        localStorage.setItem('m3u8-link', $('#m3u8-placeholder')[0].value);
+        window.location.href = './player' + '?source=' + $('#m3u8-placeholder')[0].value;
+        jw.file = $('#m3u8-placeholder')[0].value;
+    });
+});
+    </script>
   <script src="player.js"></script>
 </body>
 </html>
