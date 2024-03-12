@@ -1,68 +1,60 @@
-$(window).on('load', function () {
-    $('#m3u8-placeholder')[0].value = localStorage.getItem('m3u8-link') || '';
-    $('#play-btn').on('click', function () {
-        localStorage.setItem('m3u8-link', $('#m3u8-placeholder')[0].value);
-        window.location.href = ('#m3u8-placeholder')[0].value;
-    });
-});
+var video = document.getElementById('video');
 
-var jw = document.getElementById('jw');
-
-function playM3u8(){
+function playM3u8(url){
   if(Hls.isSupported()) {
-      jw.volume = 0.3;
+      video.volume = 0.3;
       var hls = new Hls();
-      var m3u8Url = decodeURIComponent(('#m3u8-placeholder')[0].value;)
+      var m3u8Url = decodeURIComponent(url)
       hls.loadSource(m3u8Url);
-      hls.attachMedia(jw);
+      hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED,function() {
-        jw.play();
+        video.play();
       });
       document.title = url
     }
-	else if (jw.canPlayType('application/vnd.apple.mpegurl')) {
-		jw.src = url;
-		jw.addEventListener('canplay',function() {
-		  jw.play();
+	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+		video.src = url;
+		video.addEventListener('canplay',function() {
+		  video.play();
 		});
-		jw.volume = 0.3;
+		video.volume = 0.3;
 		document.title = url;
   	}
 }
 
 function playPause() {
-    jw.paused?jw.play():jw.pause();
+    video.paused?video.play():video.pause();
 }
 
 function volumeUp() {
-    if(jw.volume <= 0.9) jw.volume+=0.1;
+    if(video.volume <= 0.9) video.volume+=0.1;
 }
 
 function volumeDown() {
-    if(jw.volume >= 0.1) jw.volume-=0.1;
+    if(video.volume >= 0.1) video.volume-=0.1;
 }
 
 function seekRight() {
-    jw.currentTime+=5;
+    video.currentTime+=5;
 }
 
 function seekLeft() {
-    jw.currentTime-=5;
+    video.currentTime-=5;
 }
 
 function vidFullscreen() {
-    if (jw.requestFullscreen) {
-      jw.requestFullscreen();
-  } else if (jw.mozRequestFullScreen) {
-      jw.mozRequestFullScreen();
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+  } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
   } else if (video.webkitRequestFullscreen) {
-      jw.webkitRequestFullscreen();
+      video.webkitRequestFullscreen();
     }
 }
 
 playM3u8(window.location.href.split("#")[1])
 $(window).on('load', function () {
-    $('#player').on('click', function(){this.paused?this.play():this.pause();});
+    $('#video').on('click', function(){this.paused?this.play():this.pause();});
     Mousetrap.bind('space', playPause);
     Mousetrap.bind('up', volumeUp);
     Mousetrap.bind('down', volumeDown);
