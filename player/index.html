@@ -1,60 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Add to Playlist</title>
-
-<script src="https://ssl.p.jwpcdn.com/player/v/7.8.1/jwplayer.js"></script>
+<html><head>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="mousetrap.min.js" charset="utf-8"></script>
+    <script src="https://ssl.p.jwpcdn.com/player/v/7.8.1/jwplayer.js"></script>
 <script> jwplayer.key = "ftjvkP4Hyf7gB3Y/mnYza01fCLcz36eSFagTl5+SZkk=";</script>
-<style type="text/css">
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-}
-a {
-    color:#000000;
-}
-ul,li {
-    list-style:none;
-}
-</style>
-<script type="text/javascript">
-   playM3u8(window.location.href.split("?source=")[1])
-$(window).on('load', function () {
-    $('#video').on('click', function(){this.paused?this.play():this.pause();});
-    Mousetrap.bind('space', playPause);
-    Mousetrap.bind('up', volumeUp);
-    Mousetrap.bind('down', volumeDown);
-    Mousetrap.bind('right', seekRight);
-    Mousetrap.bind('left', seekLeft);
-    Mousetrap.bind('f', vidFullscreen);
-});
-    var playlist = jwplayer().getPlaylist();
-    var newItem = {
-        file: url,
-        image: videoThumb,
-        title: videoTitle,
-        description: videoDesc
-    };
-    if(jwplayer().getState() != "PLAYING"){
-        playlist.push(newItem);
-        jwplayer().load(playlist);
-    } else {
-        playlist.push(newItem);
-        var curpos = jwplayer().getPosition();
-        jwplayer().onPlaylist(function(){
-            jwplayer().seek(curpos);
-        });
-        jwplayer().load(playlist).onPlaylist(function(){
-            jwplayer().seek(curpos);
-        });
+  <style>
+    body{
+      background-color:black;
     }
-}
-</script>
-</head>
+    #video{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      margin: auto;
+      max-height: 100%;
+      max-width: 100%;
+    }
+  </style>
+<title>M3U8 Player running...</title></head>
 <body>
-<div id="video"></div>
-<script>
+  <video id="video" style="width: 100%; height: 100%;"></video>
+    <script>
 jwplayer("video").setup({
       playlist: [{
         file: "url",
@@ -85,5 +56,8 @@ jwplayer("video").setup({
       }
     });
 </script>
-    </body>
+  <script src="player.js"></script>
+</body>
 </html>
+
+
