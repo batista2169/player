@@ -19,14 +19,13 @@ ul,li {
 }
 </style>
 <script type="text/javascript">
-   var url = function(videoUrl, videoThumb, videoTitle, videoDesc){
+   var url = function(url, thumb, title, desc){
               url = window.location.href;
               url = url.split('?source=');
               url = url[1];
-              videoUrl = url[1];
     var playlist = url.split('?source=');
     var newItem = {
-        file: videoUrl,
+        file: url,
         image: videoThumb,
         title: videoTitle,
         description: videoDesc
