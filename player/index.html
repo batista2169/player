@@ -12,7 +12,7 @@
     jwplayer("video").setup({
         height: 480,
         width: 840,
-        file: "url",
+        file: "m3u8Url",
         image: "http://content.bitsontherun.com/thumbs/nPripu9l-320.jpg",
         title: "Big Buck Bunny trailer",
         listbar: {
@@ -24,7 +24,7 @@
     function addVideo(videoUrl, videoThumb, videoTitle) {
         var playlist = jwplayer().getPlaylist();
         var newItem = {
-            file: url,
+            file: videoUrl,
             image: videoThumb,
             title: videoTitle
         };
