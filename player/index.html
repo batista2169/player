@@ -19,11 +19,11 @@ ul,li {
 }
 </style>
 <script type="text/javascript">
-   var addVideo = function(videoUrl, videoThumb, videoTitle, videoDesc){
-       var url = window.location.href;
+   var url = function(videoUrl, videoThumb, videoTitle, videoDesc){
+              url = window.location.href;
               url = url.split('?source=');
               url = url[1];
-               videoUrl = url[1];
+              videoUrl = url[1];
               alert(url);
     var playlist = jwplayer().getPlaylist();
     var newItem = {
