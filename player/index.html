@@ -115,7 +115,15 @@ jwplayer().onTime(function(object) {
         jwplayer().stop();
     }
 });
-
+jwplayer().on('play', function(){
+  setTimeout(function(){
+var url = window.location.href;
+              url = url.split('?source=');
+              url = url[1];
+              videoUrl = url[1];
+              alert(url);
+  },300);
+ });
 jwplayer().on('play', function(){
   setTimeout(function(){
   var textAlt = document.querySelectorAll('#' + jwplayer().id + ' .jw-controlbar-center-group .jw-text-alt')[0];
