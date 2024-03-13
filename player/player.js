@@ -22,36 +22,6 @@ function playM3u8(url){
   	}
 }
 
-function playPause() {
-    video.paused?video.play():video.pause();
-}
-
-function volumeUp() {
-    if(video.volume <= 0.9) video.volume+=0.1;
-}
-
-function volumeDown() {
-    if(video.volume >= 0.1) video.volume-=0.1;
-}
-
-function seekRight() {
-    video.currentTime+=5;
-}
-
-function seekLeft() {
-    video.currentTime-=5;
-}
-
-function vidFullscreen() {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-  } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-  } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    }
-}
-
 playM3u8(window.location.href.split("?source=")[1])
 $(window).on('load', function () {
     $('#video').on('click', function(){this.paused?this.play():this.pause();});
