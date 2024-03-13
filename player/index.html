@@ -7,9 +7,9 @@
   crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="mousetrap.min.js" charset="utf-8"></script>
-<script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script> <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script> <script type="text/javascript">var jw = {"file":"https:\/\/stream.live.novotempo.com\/tv\/smil:tvnovotempo.smil\/chunklist_slpor.m3u8","image":null,"color":"#0008ff","link":"https:\/\/tv0800.zip","logo":"","auto":"true","text":"DooPlay Theme WordPress","lposi":"bottom-left","flash":"https:\/\/tv0800.zip\/wp-content\/themes\/dooplay\/assets\/jwplayer\/jwplayer.flash.swf"}</script> <style type="text/css" media="all"> html,body{padding:0;margin:0;height:100%}#player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style> </head> <body class="jwplayer"> <div id="player"></div> <script type="text/javascript">const player = jwplayer('player').setup({image: jw.image,mute: false,volume: 25,autostart: jw.auto,repeat: false,abouttext: jw.text,aboutlink: jw.link,skin: {active: jw.color
+<script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script> <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script> <script type="text/javascript">var jw = {"file":"","image":null,"color":"#0008ff","link":"https:\/\/tv0800.zip","logo":"","auto":"true","text":"DooPlay Theme WordPress","lposi":"bottom-left","flash":"https:\/\/tv0800.zip\/wp-content\/themes\/dooplay\/assets\/jwplayer\/jwplayer.flash.swf"}</script> <style type="text/css" media="all"> html,body{padding:0;margin:0;height:100%}#player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style> </head> <body class="jwplayer"> <div id="player"></div> <script type="text/javascript">const player = jwplayer('player').setup({image: jw.image,mute: false,volume: 25,autostart: jw.auto,repeat: false,abouttext: jw.text,aboutlink: jw.link,skin: {active: jw.color
 },logo: {file: jw.logo,hide: true,link: jw.link,margin: '15',position: jw.lposi
-},sources: [{file: jw.file,type: 'video/mp4'
+},sources: [{file: m3u8Url,type: 'video/mp4'
    }],})
     function addVideo(videoUrl, videoThumb, videoTitle) {
         var playlist = jwplayer().getPlaylist();
@@ -21,9 +21,44 @@
         playlist.push(newItem);
         jwplayer().load(playlist);
     }
+
+    var video = document.getElementById('video');
+
+function playM3u8(url){
+  if(Hls.isSupported()) {
+      video.volume = 0.3;
+      var hls = new Hls();
+      var m3u8Url = decodeURIComponent(url)
+      hls.loadSource(m3u8Url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        video.play();
+      });
+      document.title = url
+    }
+	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+		video.src: = url;
+		video.addEventListener('canplay',function() {
+		  video.play();
+		});
+		video.volume = 0.3;
+		document.title = url;
+  	}
+}
+
+playM3u8(window.location.href.split("?source=")[1])
+$(window).on('load', function () {
+    $('#video').on('click', function(){this.paused?this.play():this.pause();});
+    Mousetrap.bind('space', playPause);
+    Mousetrap.bind('up', volumeUp);
+    Mousetrap.bind('down', volumeDown);
+    Mousetrap.bind('right', seekRight);
+    Mousetrap.bind('left', seekLeft);
+    Mousetrap.bind('f', vidFullscreen);
+});
 </script>
  
-   </script>
+  
 <p>Click on one of the links below to add an item to the player:</p>
 <ul>
 <li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('https://d1r94zrwa3gnlo.cloudfront.net/livestore103/stream/hls/278/278.m3u8', 'http://content.bitsontherun.com/thumbs/yj1shGJB-320.jpg', 'Sintel trailer'); return false;">Add the Sintel trailer to the playlist</a></li>
