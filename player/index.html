@@ -51,7 +51,7 @@ function playM3u8(url){
       document.title = url
     }
 	else if (jw.canPlayType('application/vnd.apple.mpegurl')) {
-		jw.file: = url;
+		video.src: = url;
 		jw.addEventListener('canplay',function() {
 		  jw.play();
 		});
