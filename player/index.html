@@ -1,63 +1,43 @@
-<html><head>
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="mousetrap.min.js" charset="utf-8"></script>
-    <script src="https://ssl.p.jwpcdn.com/player/v/7.8.1/jwplayer.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add to Playlist</title>
+<script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/7.8.1/jwplayer.js"></script>
 <script> jwplayer.key = "ftjvkP4Hyf7gB3Y/mnYza01fCLcz36eSFagTl5+SZkk=";</script>
-  <style>
-    body{
-      background-color:black;
-    }
-    #video{
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      margin: auto;
-      max-height: 100%;
-      max-width: 100%;
-    }
-  </style>
-<title>M3U8 Player running...</title></head>
+
+</head>
 <body>
-  <video id="video" style="width: 100%; height: 100%;"></video>
-    <script>
-jwplayer("video").setup({
-      playlist: [{
-        file: "url",
-        image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
-        title: "Sintel Trailer",
-        description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
-      },{
-        file: "http://content.bitsontherun.com/videos/i8oQD9zd-640.mp4",
-        image: "http://assets-jp.jwpsrv.com/thumbs/i8oQD9zd-640.jpg",
-        title: "Tears of Steel Trailer",
-        description: "A complete open pipeline was used to produce this visual effect film."
-      },{
-        file: "http://content.bitsontherun.com/videos/bkaovAYt-640.mp4",
-        image: "http://assets-jp.jwpsrv.com/thumbs/bkaovAYt-640.jpg",
-        title: "Big Buck Bunny Trailer",
-        description: "This animated film is made using free and open source software."
-      },{
-        file: "http://content.bitsontherun.com/videos/kaUXWqTZ-640.mp4",
-        image: "http://assets-jp.jwpsrv.com/thumbs/kaUXWqTZ-640.jpg",
-        title: "Elephants Dream Trailer",
-        description: "This is the worlds first open movie, made entirely with Blender."
-      }],
-      width: 700,
-      height: 360,
-      listbar: {
+<div id="container"></div>
+<script type="text/javascript">
+    jwplayer("container").setup({
+        height: 254,
+        width: 720,
+        file: "http://content.bitsontherun.com/videos/nPripu9l-60830.mp4",
+        image: "http://content.bitsontherun.com/thumbs/nPripu9l-320.jpg",
+        title: "Big Buck Bunny trailer",
+        listbar: {
         position: "right",
-        size: 280
-      }
-    });
+        size: 280,
+        },
+        primary: 'flash'
+    }); 
+    function addVideo(videoUrl, videoThumb, videoTitle) {
+        var playlist = jwplayer().getPlaylist();
+        var newItem = {
+            file: videoUrl,
+            image: videoThumb,
+            title: videoTitle
+        };
+        playlist.push(newItem);
+        jwplayer().load(playlist);
+    }
 </script>
-  <script src="player.js"></script>
+
+    <script src="player.js"></script>
+<p>Click on one of the links below to add an item to the player:</p>
+<ul>
+<li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('http://content.bitsontherun.com/videos/yj1shGJB-60830.mp4', 'http://content.bitsontherun.com/thumbs/yj1shGJB-320.jpg', 'Sintel trailer'); return false;">Add the Sintel trailer to the playlist</a></li>
+<li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('http://content.bitsontherun.com/videos/i8oQD9zd-kNspJqnJ.mp4', 'http://content.bitsontherun.com/thumbs/i8oQD9zd-640.jpg', 'Tears of Steel'); return false;">Add the Tears of Steel trailer to the playlist</a></li>
+</ul>
 </body>
 </html>
-
-
