@@ -1,13 +1,64 @@
-<!DOCTYPE html><html lang="en" dir="ltr" data-cast-api-enabled="true"> <head> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="robots" content="noindex"> <title>JBF-TVPlayer</title> <script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script> <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script> <script type="text/javascript">var jw = {"file":"#m3u8-placeholder","image":null,"color":"#0008ff","link":"https:\/\/tv0800.zip","logo":"","auto":"true","text":"DooPlay Theme WordPress","lposi":"bottom-left","flash":"https:\/\/tv0800.zip\/wp-content\/themes\/dooplay\/assets\/jwplayer\/jwplayer.flash.swf"}</script> <style type="text/css" media="all"> html,body{padding:0;margin:0;height:100%}#player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style> </head> <body class="jwplayer"> <div id="player"></div> <script type="text/javascript">const player = jwplayer('player').setup({image: jw.image,mute: false,volume: 25,autostart: jw.auto,repeat: false,abouttext: jw.text,aboutlink: jw.link,skin: {active: jw.color
-},logo: {file: jw.logo,hide: true,link: jw.link,margin: '15',position: jw.lposi
-},sources: [{file: jw.file,type: 'video/mp4'
-}],})
-</script> </body></html>
+var video = document.getElementById('video');
+
+function playM3u8(url){
+  if(Hls.isSupported()) {
+      video.volume = 0.3;
+      var hls = new Hls();
+      var m3u8Url = decodeURIComponent(url)
+      hls.loadSource(m3u8Url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        video.play();
+      });
+      document.title = url
+    }
+	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+		video.src = url;
+		video.addEventListener('canplay',function() {
+		  video.play();
+		});
+		video.volume = 0.3;
+		document.title = url;
+  	}
+}
+
+function playPause() {
+    video.paused?video.play():video.pause();
+}
+
+function volumeUp() {
+    if(video.volume <= 0.9) video.volume+=0.1;
+}
+
+function volumeDown() {
+    if(video.volume >= 0.1) video.volume-=0.1;
+}
+
+function seekRight() {
+    video.currentTime+=5;
+}
+
+function seekLeft() {
+    video.currentTime-=5;
+}
+
+function vidFullscreen() {
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+  } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+  } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    }
+}
+
+playM3u8(window.location.href.split("#")[1])
 $(window).on('load', function () {
-    $('#m3u8-placeholder')[0].value = localStorage.getItem('m3u8-link') || '';
-    $('#play-btn').on('click', function () {
-        localStorage.setItem('m3u8-link', $('#m3u8-placeholder')[0].value);
-        window.location.href = './player' + '?source=' + $('#m3u8-placeholder')[0].value;
-        mylink = $('#m3u8-placeholder')[0].value;
-    });
+    $('#video').on('click', function(){this.paused?this.play():this.pause();});
+    Mousetrap.bind('space', playPause);
+    Mousetrap.bind('up', volumeUp);
+    Mousetrap.bind('down', volumeDown);
+    Mousetrap.bind('right', seekRight);
+    Mousetrap.bind('left', seekLeft);
+    Mousetrap.bind('f', vidFullscreen);
 });
