@@ -8,36 +8,9 @@
   crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="mousetrap.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
-<script> jwplayer.key = 'ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc='; </script>
-</head>
-<body>
-<div id="video"></div>
-<script type="text/javascript">
-    jwplayer("video").setup({
-	height: 480,
-        width: 840,
-        file: "https://d1r94zrwa3gnlo.cloudfront.net/livestore103/stream/hls/281/281.m3u8",
-        image: "http://content.bitsontherun.com/thumbs/nPripu9l-320.jpg",
-        title: "Big Buck Bunny trailer",
-        listbar: {
-        position: "right",
-        size: 280,
-        },
-        primary: 'flash'
-    }); 
-    function addVideo(videoUrl, videoThumb, videoTitle) {
-        var playlist = jwplayer().getPlaylist();
-        var newItem = {
-            file: videoUrl,
-            image: videoThumb,
-            title: videoTitle
-        };
-        playlist.push(newItem);
-        jwplayer().load(playlist);
-    }
-    
-</script>
+<script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script> <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script> <script type="text/javascript">var jw = {"file":"https:\/\/stream.live.novotempo.com\/tv\/smil:tvnovotempo.smil\/chunklist_slpor.m3u8","image":null,"color":"#0008ff","link":"https:\/\/tv0800.zip","logo":"","auto":"true","text":"DooPlay Theme WordPress","lposi":"bottom-left","flash":"https:\/\/tv0800.zip\/wp-content\/themes\/dooplay\/assets\/jwplayer\/jwplayer.flash.swf"}</script> <style type="text/css" media="all"> html,body{padding:0;margin:0;height:100%}#player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style> </head> <body class="jwplayer"> <div id="player"></div> <script type="text/javascript">const player = jwplayer('player').setup({image: jw.image,mute: false,volume: 25,autostart: jw.auto,repeat: false,abouttext: jw.text,aboutlink: jw.link,skin: {active: jw.color
+},logo: {file: jw.logo,hide: true,link: jw.link,margin: '15',position: jw.lposi
+},sources: [{file: jw.file,type: 'video/mp4'
 
    
 <p>Click on one of the links below to add an item to the player:</p>
