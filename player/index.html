@@ -24,7 +24,7 @@ ul,li {
               url = url.split('?source=');
               url = url[1];
               videoUrl = url[1];
-    var playlist = jwplayer().url.split('?source=');
+    var playlist = url.split('?source=');
     var newItem = {
         file: videoUrl,
         image: videoThumb,
