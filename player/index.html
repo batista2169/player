@@ -1,146 +1,85 @@
-<style>body{padding:0;margin:0}.menu{position:absolute;z-index:2500;margin-top:4px;margin-left:4px}ul{list-style:none;padding:0}ul,li{display:block;float:right}a,span{margin-top:2px;margin-left:2px}li ul{display:none}ul li a,ul li span{display:block;font-family:helvetica;font-size:16px;background-color:transparent;padding:4px;text-decoration:none;color:#fff;width:80px;border:0px solid #aaa;border-radius:2%}ul li a:hover,ul li span:hover{background-color:transparent;color:#fff}li:hover ul{display:block;position:absolute}li:hover li{float:none}li:hover a,li:hover span{background-color:#176e77;border:0px solid #134850;color:#fff}li:hover li a:hover,li:hover li span:hover{width:80px}</style>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add to Playlist</title>
 
-<ul class="menu">
-<li>
-<span style="color: #00FF00" title="TV Pampa 'Porto Alegre/RS'">📟 RS</span>
-<ul>
-<li><a href="redetvpr.html" title="Rede TV! Paraná 'Cascavel/PR'">📺 PR</a></li>
-<li><a href="redetvpb.html" title="TV Arapuan 'João Pessoa/PB'">📺 PB</a></li>
-<li><a href="redetvto.html" title="Rede TV! Tocantins 'Palmas/TO'">📺 TO</a></li>
-<li><a href="redetvmt.html" title="TV Pantanal 'Cuiabá/MT'">📺 MT</a></li>
-<li><a href="redetves.html" title="RedeTV! ES 'Vila Velha/ES'">📺 ES</a></li>
-<li><a href="" title="TV Pampa 'Porto Alegre/RS'">Refresh</a></li>
-</ul>
-</ul>
-<center>
-<div id="jbf-tv" style="position: relative; display: block; width:100%;height:100%;background-color:#3366FF;">
-<script src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
-<script> jwplayer.key = 'ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc='; </script>
-<div id="jbf-tv">Loading Player...</div> 
-<script type="text/javascript">
-var playerInstance = jwplayer("jbf-tv");
-playerInstance.setup({
-    autostart: true,
-    mute: true,
-    controls: false,
-    aspectratio: "16:9",
-    stretching: "exactfit",      //uniform|fill|exactfit|bestfit|none
-    primary:"flash",
-    repeat: true,
-    height: '100%',
-    width: '100%',
-    skin: {
-      controlbar: {
-         background: "#2F4F4F",
-         icons: "#F5F5DC",
-         text: "#FFFFF0"
-    },
-    menus: {
-         background: "#4682B4",
-         text: "#FFFFF0"
-    },
-    name: "roundster",     //beelden|bekle|five|glow|modieus|roundster|six|stormtrooper|vapor
-    tooltips: {
-         background: "#00868B",
-         text: "#FFFFF0"
-    }
-    },
-    sharing: { heading: "Partilhar Video",
-    },
-    fallback: false,
-    androidhls: "true",
-    logo: {
-         file: "https://03cbda85-a-62cb3a1a-s-sites.googlegroups.com/site/jbftvs/imag/blog/tvlogofavi32.ico",
-         link: "http://jbf-tv.blogspot.com.br",
-         position: "bottom-left",       //top-right|top-left|bottom-right|bottom-left
-    },
-    hlslabels: {
-        b1080000: "FHD 1080p",
-         b720000: "HD   720p",
-         b480000: "SD   480p",
-         b360000: "SD   360p"
-    },
-
-    abouttext: "About JBF-TV :: JW Player Version 7.12.13 :: Copyright (c) 2023",  
-    aboutlink: "http://jbf-tv.blogspot.com.br",
-
-    playlist: [{
-      "sources": [{
-      "file": "url[1]",
-      "hls": {
-        "fairplay": {
-          "certificateUrl": "http://myfairplay.com/fairplay/cert",
-          "processSpcUrl": "http://myfairplay.com/fairplay/ckc"
-        }
-      }
-   
-},{
-      "file": "https://0006-bbc.dtvott.com/dash_live_0007/manifest.mpd",
-      "drm": {
-        "clearkey": {
-          "key": "92425dc7dc8a9f090d8fe9f33ed68d45",
-          "keyId": "0dbc422a1181541aaedcb15b97870ad9"
-  }
-      }
-},{
-      "file": "myPlayreadyStream.mpd",
-      "drm": {
-        "playready": {
-          "url": "http://myplayreadyurl.com/drm"
-
- }
-      }
- },{
-      "file": "myWidevineStream.mpd",
-      "drm": {
-        "widevine": {
-          "url": "http://mywidevineurl.com/drm"
-
+<script src="https://ssl.p.jwpcdn.com/player/v/7.8.1/jwplayer.js"></script>
+<script> jwplayer.key = "ftjvkP4Hyf7gB3Y/mnYza01fCLcz36eSFagTl5+SZkk=";</script>
+<style type="text/css">
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
 }
-      }
-          }]
-          
-      }]
-    
- });
-
-setTimeout(function() { 
-    jwplayer().stop();
-    jwplayer().setMute(false);
-    jwplayer().setControls(true);
-},1000);
-
-jwplayer().onTime(function(object) {
-    if (object.position > object.duration - 1) {
-        jwplayer().stop();
-    }
-});
-jwplayer().on('play', function(){
-  setTimeout(function(){
+a {
+    color:#000000;
+}
+ul,li {
+    list-style:none;
+}
+</style>
+<script type="text/javascript">
 var url = window.location.href;
-              url = url.split('?source=');
+              url = url.split('Desktop');
               url = url[1];
-              
+               videoUrl = url[1];
               alert(url);
-  },300);
- });
-jwplayer().on('play', function(){
-  setTimeout(function(){
-  var textAlt = document.querySelectorAll('#' + jwplayer().id + ' .jw-controlbar-center-group .jw-text-alt')[0];
-  if(textAlt) textAlt.innerHTML = "TV Pampa 'RS' - Ao Vivo";
-  },300);
- });
-
-playerInstance.on('setupError', function () {
-    playerInstance.setup({
-        title: "FALHA AO CARREGAR ARQUIVO",
-        file: "https://stmv1.srvstm.com/sistema7933/sistema7933/playlist.m3u8",
-        image:"https://upload.wikimedia.org/wikipedia/pt/thumb/b/b5/Logotipo_da_ISTV.png/200px-Logotipo_da_ISTV.png",
-        autostart: true,
-    });
-});
-
-
+   var addVideo = function(videoUrl, videoThumb, videoTitle, videoDesc){
+    var playlist = jwplayer().getPlaylist();
+    var newItem = {
+        file: url,
+        image: videoThumb,
+        title: videoTitle,
+        description: videoDesc
+    };
+    if(jwplayer().getState() != "PLAYING"){
+        playlist.push(newItem);
+        jwplayer().load(playlist);
+    } else {
+        playlist.push(newItem);
+        var curpos = jwplayer().getPosition();
+        jwplayer().onPlaylist(function(){
+            jwplayer().seek(curpos);
+        });
+        jwplayer().load(playlist).onPlaylist(function(){
+            jwplayer().seek(curpos);
+        });
+    }
+}
 </script>
-</div>
-</center>
+</head>
+<body>
+<div id="myElement"></div>
+<script>
+jwplayer("myElement").setup({
+      playlist: [{
+        file: "videoUrl",
+        image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
+        title: "Sintel Trailer",
+        description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
+      },{
+        file: "http://content.bitsontherun.com/videos/i8oQD9zd-640.mp4",
+        image: "http://assets-jp.jwpsrv.com/thumbs/i8oQD9zd-640.jpg",
+        title: "Tears of Steel Trailer",
+        description: "A complete open pipeline was used to produce this visual effect film."
+      },{
+        file: "http://content.bitsontherun.com/videos/bkaovAYt-640.mp4",
+        image: "http://assets-jp.jwpsrv.com/thumbs/bkaovAYt-640.jpg",
+        title: "Big Buck Bunny Trailer",
+        description: "This animated film is made using free and open source software."
+      },{
+        file: "http://content.bitsontherun.com/videos/kaUXWqTZ-640.mp4",
+        image: "http://assets-jp.jwpsrv.com/thumbs/kaUXWqTZ-640.jpg",
+        title: "Elephants Dream Trailer",
+        description: "This is the worlds first open movie, made entirely with Blender."
+      }],
+      width: 700,
+      height: 360,
+      listbar: {
+        position: "right",
+        size: 280
+      }
+    });
+</script>
+    </body>
+</html>
