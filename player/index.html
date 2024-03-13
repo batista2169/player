@@ -19,15 +19,15 @@ ul,li {
 }
 </style>
 <script type="text/javascript">
-var url = window.location.href;
-              url = url.split('Desktop');
+   var addVideo = function(videoUrl, videoThumb, videoTitle, videoDesc){
+       var url = window.location.href;
+              url = url.split('?source=');
               url = url[1];
                videoUrl = url[1];
               alert(url);
-   var addVideo = function(videoUrl, videoThumb, videoTitle, videoDesc){
     var playlist = jwplayer().getPlaylist();
     var newItem = {
-        file: url,
+        file: videoUrl,
         image: videoThumb,
         title: videoTitle,
         description: videoDesc
