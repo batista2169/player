@@ -11,10 +11,10 @@
 },logo: {file: jw.logo,hide: true,link: jw.link,margin: '15',position: jw.lposi
 },sources: [{file: jw.file,type: 'video/mp4'
    }],})
-    function addVideo(jw.file, videoThumb, videoTitle) {
+    function addVideo(videoUrl, videoThumb, videoTitle) {
         var playlist = jwplayer().getPlaylist();
         var newItem = {
-            file: jw.file,
+            file: videoUrl,
             image: videoThumb,
             title: videoTitle
         };
