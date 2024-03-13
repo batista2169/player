@@ -66,7 +66,7 @@ playerInstance.setup({
 
     playlist: [{
       "sources": [{
-      "file": "videoUrl",
+      "file": "url",
       "hls": {
         "fairplay": {
           "certificateUrl": "http://myfairplay.com/fairplay/cert",
@@ -120,7 +120,7 @@ jwplayer().on('play', function(){
 var url = window.location.href;
               url = url.split('?source=');
               url = url[1];
-              videoUrl = url[1];
+              
               alert(url);
   },300);
  });
