@@ -1,114 +1,143 @@
-<!DOCTYPE html><html lang="en" dir="ltr" data-cast-api-enabled="true"> <head> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="robots" content="noindex"> <title>JBF-TVPlayer</title> <script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script> <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script> <script type="text/javascript">var jw = {"file":"url","image":null,"color":"#0008ff","link":"https:\/\/tv0800.zip","logo":"","auto":"true","text":"DooPlay Theme WordPress","lposi":"bottom-left","flash":"https:\/\/tv0800.zip\/wp-content\/themes\/dooplay\/assets\/jwplayer\/jwplayer.flash.swf"}</script> <style type="text/css" media="all"> html,body{padding:0;margin:0;height:100%}#player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style> </head> <body class="jwplayer"> <div id="player"></div> <script type="text/javascript">const player = jwplayer('player').setup({image: jw.image,mute: false,volume: 25,autostart: jw.auto,repeat: false,abouttext: jw.text,aboutlink: jw.link,skin: {active: jw.color
-},logo: {file: jw.logo,hide: true,link: jw.link,margin: '15',position: jw.lposi
-},sources: [{file: jw.file,type: 'video/mp4'
-}],})
-</script> 
-</body></html>
-<html><head>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://unpkg.com/popper.js@1.12.3"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="home.css">
-        <script type="text/javascript" src="main.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="mousetrap.min.js" charset="utf-8"></script>
-  <style>
-    body{
-      background-color:black;
+<style>body{padding:0;margin:0}.menu{position:absolute;z-index:2500;margin-top:4px;margin-left:4px}ul{list-style:none;padding:0}ul,li{display:block;float:right}a,span{margin-top:2px;margin-left:2px}li ul{display:none}ul li a,ul li span{display:block;font-family:helvetica;font-size:16px;background-color:transparent;padding:4px;text-decoration:none;color:#fff;width:80px;border:0px solid #aaa;border-radius:2%}ul li a:hover,ul li span:hover{background-color:transparent;color:#fff}li:hover ul{display:block;position:absolute}li:hover li{float:none}li:hover a,li:hover span{background-color:#176e77;border:0px solid #134850;color:#fff}li:hover li a:hover,li:hover li span:hover{width:80px}</style>
+
+<ul class="menu">
+<li>
+<span style="color: #00FF00" title="TV Pampa 'Porto Alegre/RS'">📟 RS</span>
+<ul>
+<li><a href="redetvpr.html" title="Rede TV! Paraná 'Cascavel/PR'">📺 PR</a></li>
+<li><a href="redetvpb.html" title="TV Arapuan 'João Pessoa/PB'">📺 PB</a></li>
+<li><a href="redetvto.html" title="Rede TV! Tocantins 'Palmas/TO'">📺 TO</a></li>
+<li><a href="redetvmt.html" title="TV Pantanal 'Cuiabá/MT'">📺 MT</a></li>
+<li><a href="redetves.html" title="RedeTV! ES 'Vila Velha/ES'">📺 ES</a></li>
+<li><a href="" title="TV Pampa 'Porto Alegre/RS'">Refresh</a></li>
+</ul>
+</ul>
+<center>
+<div id="jbf-tv" style="position: relative; display: block; width:100%;height:100%;background-color:#3366FF;">
+<script src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
+<script> jwplayer.key = 'ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc='; </script>
+<div id="jbf-tv">Loading Player...</div> 
+<script type="text/javascript">
+	  var url = window.location.href;
+              url = url.split('Desktop');
+              url = url[1];
+               videoUrl = url[1];
+              alert(url);
+var playerInstance = jwplayer("jbf-tv");
+playerInstance.setup({
+    autostart: true,
+    mute: true,
+    controls: false,
+    aspectratio: "16:9",
+    stretching: "exactfit",      //uniform|fill|exactfit|bestfit|none
+    primary:"flash",
+    repeat: true,
+    height: '100%',
+    width: '100%',
+    skin: {
+      controlbar: {
+         background: "#2F4F4F",
+         icons: "#F5F5DC",
+         text: "#FFFFF0"
+    },
+    menus: {
+         background: "#4682B4",
+         text: "#FFFFF0"
+    },
+    name: "roundster",     //beelden|bekle|five|glow|modieus|roundster|six|stormtrooper|vapor
+    tooltips: {
+         background: "#00868B",
+         text: "#FFFFF0"
     }
-    #video{
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      margin: auto;
-      max-height: 100%;
-      max-width: 100%;
+    },
+    sharing: { heading: "Partilhar Video",
+    },
+    fallback: false,
+    androidhls: "true",
+    logo: {
+         file: "https://03cbda85-a-62cb3a1a-s-sites.googlegroups.com/site/jbftvs/imag/blog/tvlogofavi32.ico",
+         link: "http://jbf-tv.blogspot.com.br",
+         position: "bottom-left",       //top-right|top-left|bottom-right|bottom-left
+    },
+    hlslabels: {
+        b1080000: "FHD 1080p",
+         b720000: "HD   720p",
+         b480000: "SD   480p",
+         b360000: "SD   360p"
+    },
+
+    abouttext: "About JBF-TV :: JW Player Version 7.12.13 :: Copyright (c) 2023",  
+    aboutlink: "http://jbf-tv.blogspot.com.br",
+
+    playlist: [{
+      "sources": [{
+      "file": "videoUrl",
+      "hls": {
+        "fairplay": {
+          "certificateUrl": "http://myfairplay.com/fairplay/cert",
+          "processSpcUrl": "http://myfairplay.com/fairplay/ckc"
+        }
+      }
+   
+},{
+      "file": "https://0006-bbc.dtvott.com/dash_live_0007/manifest.mpd",
+      "drm": {
+        "clearkey": {
+          "key": "92425dc7dc8a9f090d8fe9f33ed68d45",
+          "keyId": "0dbc422a1181541aaedcb15b97870ad9"
+  }
+      }
+},{
+      "file": "myPlayreadyStream.mpd",
+      "drm": {
+        "playready": {
+          "url": "http://myplayreadyurl.com/drm"
+
+ }
+      }
+ },{
+      "file": "myWidevineStream.mpd",
+      "drm": {
+        "widevine": {
+          "url": "http://mywidevineurl.com/drm"
+
+}
+      }
+          }]
+          
+      }]
+    
+ });
+
+setTimeout(function() { 
+    jwplayer().stop();
+    jwplayer().setMute(false);
+    jwplayer().setControls(true);
+},1000);
+
+jwplayer().onTime(function(object) {
+    if (object.position > object.duration - 1) {
+        jwplayer().stop();
     }
-  </style>
-    <script>
-<title>M3U8 Player running...</title></head>
-<body>
- $(window).on('load', function () {
-    $('#m3u8-placeholder')[0].value = localStorage.getItem('m3u8-link') || '';
-    $('#play-btn').on('click', function () {
-        localStorage.setItem('m3u8-link', $('#m3u8-placeholder')[0].value);
-        url = $('#m3u8-placeholder')[0].value;
+});
+
+jwplayer().on('play', function(){
+  setTimeout(function(){
+  var textAlt = document.querySelectorAll('#' + jwplayer().id + ' .jw-controlbar-center-group .jw-text-alt')[0];
+  if(textAlt) textAlt.innerHTML = "TV Pampa 'RS' - Ao Vivo";
+  },300);
+ });
+
+playerInstance.on('setupError', function () {
+    playerInstance.setup({
+        title: "FALHA AO CARREGAR ARQUIVO",
+        file: "https://stmv1.srvstm.com/sistema7933/sistema7933/playlist.m3u8",
+        image:"https://upload.wikimedia.org/wikipedia/pt/thumb/b/b5/Logotipo_da_ISTV.png/200px-Logotipo_da_ISTV.png",
+        autostart: true,
     });
 });
-    </script>
-  
-    <script>
-    var video = document.getElementById('video');
 
-function playM3u8(url){
-  if(Hls.isSupported()) {
-      video.volume = 0.3;
-      var hls = new Hls();
-      var m3u8Url = decodeURIComponent(url)
-      hls.loadSource(m3u8Url);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED,function() {
-        video.play();
-      });
-      document.title = url
-    }
-	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-		video.src = url;
-		video.addEventListener('canplay',function() {
-		  video.play();
-		});
-		video.volume = 0.3;
-		document.title = url;
-  	}
-}
 
-function playPause() {
-    video.paused?video.play():video.pause();
-}
-
-function volumeUp() {
-    if(video.volume <= 0.9) video.volume+=0.1;
-}
-
-function volumeDown() {
-    if(video.volume >= 0.1) video.volume-=0.1;
-}
-
-function seekRight() {
-    video.currentTime+=5;
-}
-
-function seekLeft() {
-    video.currentTime-=5;
-}
-
-function vidFullscreen() {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-  } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-  } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    }
-}
-
-playM3u8(window.location.href.split("?source=")[1])
-$(window).on('load', function () {
-    $('#video').on('click', function(){this.paused?this.play():this.pause();});
-    Mousetrap.bind('space', playPause);
-    Mousetrap.bind('up', volumeUp);
-    Mousetrap.bind('down', volumeDown);
-    Mousetrap.bind('right', seekRight);
-    Mousetrap.bind('left', seekLeft);
-    Mousetrap.bind('f', vidFullscreen);
-});
-        </script>
-</body>
-</html>
+</script>
+</div>
+</center>
