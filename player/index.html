@@ -40,22 +40,22 @@
 
 function playM3u8(url){
   if(Hls.isSupported()) {
-      jw.volume = 0.3;
+      video.volume = 0.3;
       var hls = new Hls();
       var m3u8Url = decodeURIComponent(url)
       hls.loadSource(m3u8Url);
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED,function() {
-        jw.play();
+        video.play();
       });
       document.title = url
     }
-	else if (jw.canPlayType('application/vnd.apple.mpegurl')) {
+	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
 		video.src: = url;
-		jw.addEventListener('canplay',function() {
-		  jw.play();
+		video.addEventListener('canplay',function() {
+		  video.play();
 		});
-		jw.volume = 0.3;
+		video.volume = 0.3;
 		document.title = url;
   	}
 }
