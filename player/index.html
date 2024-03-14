@@ -42,15 +42,14 @@ playerInstance.setup({
           });
     jwplayer().on('play', function(){
   setTimeout(function(){
-  var textAlt = document.querySelectorAll('#' + jwplayer().id + ' .jw-controlbar-center-group .jw-text-alt')[0];
-  if(textAlt) textAlt.innerHTML = "TV Pampa 'RS' - Ao Vivo";
-  },300);
- });
-    var url = window.location.href;
+  var url = window.location.href;
               url = url.split('?source=');
               url = url[1];
               newURL = url[1];
-              alert(url);
+      alert(url);
+  },300);
+ });
+    
    function playjw(file) {
 var newURL = url[1];
     return false; // this is required to not let the browser follow the link.
