@@ -17,20 +17,35 @@
 <div id="player1"  controls>Loading Player...</div>   
 </center>
 
-<script type='text/javascript'>
-    var playerInstance = undefined;
-button.onclick = function(newURL){
-    if (playerInstance = undefined){
+<script type='text/javascript'>    
 var playerInstance = jwplayer("player1");
 playerInstance.setup({
-            width: 640,
-            height: 480,
-            file: newURL
-        });
-    } else {
-        playerInstance.load(newData);
-    }
-};
+ playlist: [{
+        file: "newURL",
+        image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
+        title: "Sintel Trailer",
+        description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
+}],
+    autostart: true,
+    mute: true,
+    controls: false,
+    aspectratio: "16:9",
+    stretching: "exactfit",      //uniform|fill|exactfit|bestfit|none
+    primary:"flash",
+    repeat: true,
+    height: '480',
+    width: '840',
+      listbar: {
+        position: "right",
+        size: 280
+      }
+          });
+    jwplayer().on('play', function(){
+  setTimeout(function(){
+  var textAlt = document.querySelectorAll('#' + jwplayer().id + ' .jw-controlbar-center-group .jw-text-alt')[0];
+  if(textAlt) textAlt.innerHTML = "TV Pampa 'RS' - Ao Vivo";
+  },300);
+ });
     var url = window.location.href;
               url = url.split('?source=');
               url = url[1];
