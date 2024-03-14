@@ -64,7 +64,7 @@ function playM3u8(url){
       document.title = url
     }
 	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-		video.src = url;
+		video.file = url;
 		video.addEventListener('canplay',function() {
 		  video.play();
 		});
