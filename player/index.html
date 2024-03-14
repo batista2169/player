@@ -1,33 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head> 
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="mousetrap.min.js" charset="utf-8"></script>
-<script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script> <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script> <script type="text/javascript">var jw = {"file":"videoUrl","image":null,"color":"#0008ff","link":"https:\/\/tv0800.zip","logo":"","auto":"true","text":"DooPlay Theme WordPress","lposi":"bottom-left","flash":"https:\/\/tv0800.zip\/wp-content\/themes\/dooplay\/assets\/jwplayer\/jwplayer.flash.swf"}</script> <style type="text/css" media="all"> html,body{padding:0;margin:0;height:100%}#player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style> </head> <body class="jwplayer"> <div id="player"></div> <script type="text/javascript">const player = jwplayer('player').setup({image: jw.image,mute: false,volume: 25,autostart: jw.auto,repeat: false,abouttext: jw.text,aboutlink: jw.link,skin: {active: jw.color
-},logo: {file: jw.logo,hide: true,link: jw.link,margin: '15',position: jw.lposi
-},sources: [{file: jw.file,type: 'video/mp4'
-   }],})
-    function addVideo(videoUrl, videoThumb, videoTitle) {
-        var playlist = jwplayer().getPlaylist();
-        var newItem = {
-            file: videoUrl,
-            image: videoThumb,
-            title: videoTitle
-        };
-        playlist.push(newItem);
-        jwplayer().load(playlist);
-    }
+<head>
+    <meta charset="UTF-8">
+    <title>CDNBye JWPlayer Demo</title>
+    <!-- CDNBye Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
+    <script src="https://cdn.jsdelivr.net/gh/teranode/jw-provider@0.0.9/provider.hlsjs.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest/dist/jwplayer.provider.hls.js"></script>-->
+    <!-- JW Player Builds -->
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
+<script> jwplayer.key = 'ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc='; </script>
+</head>
+<body>
+<header></header>
+<center>
+<div id="player1"  controls>Loading Player...</div>   
+</center>
+
+<script type='text/javascript'>
+var playerInstance = jwplayer("player1");
+playerInstance.setup({
+playlist: [{
+        file: "newURL",
+        image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
+        title: "Sintel Trailer",
+        description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
+}],
+    autostart: true,
+    mute: true,
+    controls: false,
+    aspectratio: "16:9",
+    stretching: "exactfit",      //uniform|fill|exactfit|bestfit|none
+    primary:"flash",
+    repeat: true,
+    height: '480',
+    width: '840',
+      listbar: {
+        position: "right",
+        size: 280
+      }
+    });
+var newURL;
+//javascript codes here
+document.write(newURL); //will output something like this - https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8
+
 </script>
- 
-  
-<p>Click on one of the links below to add an item to the player:</p>
-<ul>
-<li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('https://d1r94zrwa3gnlo.cloudfront.net/livestore103/stream/hls/278/278.m3u8', 'http://content.bitsontherun.com/thumbs/yj1shGJB-320.jpg', 'Sintel trailer'); return false;">Add the Sintel trailer to the playlist</a></li>
-<li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('https://d1r94zrwa3gnlo.cloudfront.net/livestore103/stream/hls/279/279.m3u8', 'http://content.bitsontherun.com/thumbs/i8oQD9zd-640.jpg', 'Tears of Steel'); return false;">Add the Tears of Steel trailer to the playlist</a></li>
-</ul>
+
 </body>
 </html>
