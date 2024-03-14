@@ -18,6 +18,9 @@
 </center>
 
 <script type='text/javascript'>
+    var playerInstance = undefined;
+button.onclick = function(newURL){
+    if (playerInstance === undefined){
 var playerInstance = jwplayer("player1");
 playerInstance.setup({
 playlist: [{
@@ -39,6 +42,8 @@ playlist: [{
         position: "right",
         size: 280
       }
+    } else {
+        playerInstance.load(newURL);
     });
     var url = window.location.href;
               url = url.split('?source=');
