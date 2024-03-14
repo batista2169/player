@@ -21,7 +21,7 @@
 var playerInstance = jwplayer("player1");
 playerInstance.setup({
  playlist: [{
-        file: "newURL",
+        file: "url",
         image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
         title: "Sintel Trailer",
         description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
@@ -40,20 +40,80 @@ playerInstance.setup({
         size: 280
       }
           });
-    jwplayer().on('play', function(){
-  setTimeout(function(){
-  var url = window.location.href;
-              url = url.split('?source=');
-              url = url[1];
-              newURL = url[1];
-      alert(url);
-  },300);
- });
+
+
     
-   function playjw(file) {
-var newURL = url[1];
-    return false; // this is required to not let the browser follow the link.
-       }
+  //var url = window.location.href;
+              //url = url.split('?source=');
+             // url = url[1];
+              //newURL = url[1];
+     // alert(url);
+ 
+    var video = document.getElementById('player1');
+
+function playM3u8(url){
+  if(Hls.isSupported()) {
+      video.volume = 0.3;
+      var hls = new Hls();
+      var m3u8Url = decodeURIComponent(url)
+      hls.loadSource(m3u8Url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        video.play();
+      });
+      document.title = url
+    }
+	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+		video.src = url;
+		video.addEventListener('canplay',function() {
+		  video.play();
+		});
+		video.volume = 0.3;
+		document.title = url;
+  	}
+}
+
+function playPause() {
+    video.paused?video.play():video.pause();
+}
+
+function volumeUp() {
+    if(video.volume <= 0.9) video.volume+=0.1;
+}
+
+function volumeDown() {
+    if(video.volume >= 0.1) video.volume-=0.1;
+}
+
+function seekRight() {
+    video.currentTime+=5;
+}
+
+function seekLeft() {
+    video.currentTime-=5;
+}
+
+function vidFullscreen() {
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+  } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+  } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    }
+}
+
+playM3u8(window.location.href.split("?source=")[1])
+$(window).on('load', function () {
+    $('#video').on('click', function(){this.paused?this.play():this.pause();});
+    Mousetrap.bind('space', playPause);
+    Mousetrap.bind('up', volumeUp);
+    Mousetrap.bind('down', volumeDown);
+    Mousetrap.bind('right', seekRight);
+    Mousetrap.bind('left', seekLeft);
+    Mousetrap.bind('f', vidFullscreen);
+});
+
 //var newURL;
 //javascript codes here
 //document.write(newURL); //will output something like this - https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8
