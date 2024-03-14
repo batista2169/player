@@ -14,11 +14,11 @@
 <body>
 <header></header>
 <center>
-<div id="player1"  controls>Loading Player...</div>   
+<div id="video"  controls>Loading Player...</div>   
 </center>
 
 <script type='text/javascript'>    
-var playerInstance = jwplayer("player1");
+var playerInstance = jwplayer("video");
 playerInstance.setup({
  playlist: [{
         file: "https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8",
@@ -49,7 +49,7 @@ playerInstance.setup({
               //newURL = url[1];
      // alert(url);
  
-    var video = document.getElementById('player1');
+    var video = document.getElementById('video');
 
 function playM3u8(url){
   if(Hls.isSupported()) {
