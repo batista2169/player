@@ -23,29 +23,14 @@ button.onclick = function(newURL){
     if (playerInstance === undefined){
 var playerInstance = jwplayer("player1");
 playerInstance.setup({
-playlist: [{
-        file: "newURL",
-        image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
-        title: "Sintel Trailer",
-        description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
-}],
-    autostart: true,
-    mute: true,
-    controls: false,
-    aspectratio: "16:9",
-    stretching: "exactfit",      //uniform|fill|exactfit|bestfit|none
-    primary:"flash",
-    repeat: true,
-    height: '480',
-    width: '840',
-      listbar: {
-        position: "right",
-        size: 280
-      }
+            width: 640,
+            height: 480,
+            file: newData
+        });
     } else {
-        playerInstance.load(newURL);
-        }
-    });
+        playerInstance.load(newData);
+    }
+};
     var url = window.location.href;
               url = url.split('?source=');
               url = url[1];
