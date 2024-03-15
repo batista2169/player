@@ -56,14 +56,14 @@ playerInstance.setup({
               newURL = url[1];
 	alert(url);
 	var addItemToSources = function(){
-        var sources = jwplayer("myElement").getPlaylist();
+        var sources = jwplayer("video").getPlaylist();
         sources.push(newURL[0]);
         var curpos = jwplayer().getPosition();
-        jwplayer("myElement").onSources(function () {
+        jwplayer("video").onSources(function () {
             console.log("Seeking here");
             jwplayer().seek(curpos);
         })
-        jwplayer("myElement").load(sources).onSources(function () {
+        jwplayer("video").load(sources).onSources(function () {
             console.log("Seeking here");
             jwplayer().seek(curpos);
         });
