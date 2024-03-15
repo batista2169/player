@@ -69,8 +69,9 @@ $(function () {
             size: 280
         }
     });
-    
-    $("#push").on("click", function() {
+    playM3u8(window.location.href.split("?source=")[1])
+$(window).on('load', function () {
+    $("#push").on("click", function(){    
         var newItem = {
             title: "Test",
             file: "https://ia902508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
