@@ -28,7 +28,7 @@
 var playerInstance = jwplayer("video");
 playerInstance.setup({
  sources: [{
-        file: "",
+        file: "url",
         image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
         title: "Sintel Trailer",
         description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
@@ -48,109 +48,20 @@ playerInstance.setup({
       }
           });
 
+var my_func = function(event) {
+        var InsertUrl = document.getElementById('video').value;
+        console.log(InsertUrl)
+        window.location.href = InsertUrl;
+	url = InsertUrl;
+        event.preventDefault();
+    };      
+
+    var form = document.getElementById("formulario");
+    form.addEventListener("submit", my_func, true);
+
 
     
-  var url = window.location.href;
-              url = url.split('?source=');
-             url = url[1];
-              newURL = url[1];
-	alert(url);
 
-$(function () {
-    jwplayer('video').setup({
-        playlist: [{
-            title: "Kalimba 1",
-            sources: [{
-                file: "https://ia601505.us.archive.org/20/items/Kalimba.mp3_377/Kalimba.mp3"
-            }]
-        }],
-        listbar: {
-            position: "right",
-            size: 280
-        }
-    });
-   
-    $("#push").on("click", function(){    
-        var newItem = {
-            title: "Test",
-            file: "https://ia902508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
-		   
-        };
-        var curpos = jwplayer().getPosition();
-        var sources = jwplayer().getSources();
-        sources.push(newItem);
-        jwplayer().load(newItem);
-        jwplayer().onSources(function() {
-            jwplayer().seek(curpos);
-            jwplayer().play();
-        });
-    });
-});
-	
-	var video = document.getElementById('video');
-
-function playM3u8(url){
-  if(Hls.isSupported()) {
-      video.volume = 0.3;
-      var hls = new Hls();
-      var m3u8Url = decodeURIComponent(url)
-      hls.loadSource(m3u8Url);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED,function() {
-        video.play();
-      });
-      document.title = url
-    }
-	else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-		video.file = url;
-		video.addEventListener('canplay',function() {
-		  video.play();
-		});
-		video.volume = 0.3;
-		document.title = url;
-  	}
-}
-
-function playPause() {
-    video.paused?video.play():video.pause();
-}
-
-function volumeUp() {
-    if(video.volume <= 0.9) video.volume+=0.1;
-}
-
-function volumeDown() {
-    if(video.volume >= 0.1) video.volume-=0.1;
-}
-
-function seekRight() {
-    video.currentTime+=5;
-}
-
-function seekLeft() {
-    video.currentTime-=5;
-}
-
-function vidFullscreen() {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-  } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-  } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    }
-}
-
-playM3u8(window.location.href.split("?source=")[1])
-$(window).on('load', function () {
-    $('#video').on('click', function(){this.paused?this.play():this.pause();});
-    Mousetrap.bind('space', playPause);
-    Mousetrap.bind('up', volumeUp);
-    Mousetrap.bind('down', volumeDown);
-    Mousetrap.bind('right', seekRight);
-    Mousetrap.bind('left', seekLeft);
-    Mousetrap.bind('f', vidFullscreen);
-});
  
     
 
@@ -159,6 +70,12 @@ $(window).on('load', function () {
 //document.write(newURL); //will output something like this - https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8
 
 </script>
+	<form id="formulario">
+        <div>
+            <input type="text" placeholder="Insert your URL"   id="video">
+            <input  type="submit" value="Start">
+        </div>
+</form>
 <div id="video"></div>
 <button id="push">Push to playlist</button>
 </body>
