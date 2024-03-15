@@ -54,14 +54,21 @@ playerInstance.setup({
               url = url.split('?source=');
              url = url[1];
               newURL = url[1];
-	function playTrailer(key) {
-    $('#video').show(); // show video player        
-    jwplayer().load(newURL);
-    jwplayer().play({
-        autostart: false
-    });
-}
-     // alert(url);
+	alert(url);
+	var addItemToSources = function(){
+        var sources = jwplayer("myElement").getPlaylist();
+        sources.push(sources[0]);
+        var curpos = jwplayer().getPosition();
+        jwplayer("myElement").onSources(function () {
+            console.log("Seeking here");
+            jwplayer().seek(curpos);
+        })
+        jwplayer("myElement").load(sources).onSources(function () {
+            console.log("Seeking here");
+            jwplayer().seek(curpos);
+        });
+    }
+     
  
     var video = document.getElementById('video');
 
