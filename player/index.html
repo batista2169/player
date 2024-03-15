@@ -48,6 +48,18 @@ playerInstance.setup({
       }
           });
 
+
+  function loadVideo(myFile,myImage) { 
+    jwplayer().load([{
+      file: myFile,
+      image: myImage
+    }]);
+    jwplayer().play();
+  };
+
+
+
+	
 var my_func = function(event) {
         var InsertUrl = document.getElementById('video').value;
         console.log(InsertUrl)
@@ -70,6 +82,10 @@ var my_func = function(event) {
 //document.write(newURL); //will output something like this - https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8
 
 </script>
+
+	<li><a href="javascript:loadVideo('https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8','image1.jpg')">Video 1</a></li>
+<li><a href="javascript:loadVideo('file2.mp4','image2.jpg')">Video 2</a></li>
+<li><a href="javascript:loadVideo('file3.mp4','image3.jpg')">Video 3</a></li>
 	<form id="formulario">
         <div>
             <input type="text" placeholder="Insert your URL"   id="video">
