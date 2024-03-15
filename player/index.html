@@ -54,9 +54,13 @@ playerInstance.setup({
               url = url.split('?source=');
              url = url[1];
               newURL = url[1];
-	function playjw(video) {
-
-var newURL=url;}
+	function playTrailer(key) {
+    $('#video').show(); // show video player        
+    jwplayer().load(newURL);
+    jwplayer().play({
+        autostart: false
+    });
+}
      // alert(url);
  
     var video = document.getElementById('video');
