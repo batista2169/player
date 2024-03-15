@@ -28,7 +28,7 @@
 var playerInstance = jwplayer("video");
 playerInstance.setup({
  sources: [{
-        file: "newURL",
+        file: "",
         image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
         title: "Sintel Trailer",
         description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
@@ -55,20 +55,38 @@ playerInstance.setup({
              url = url[1];
               newURL = url[1];
 	alert(url);
-	var addItemToSources = function(){
-        var sources = jwplayer("video").getPlaylist();
-        sources.push(url[1]);
+
+$(function () {
+    jwplayer('video').setup({
+        playlist: [{
+            title: "Kalimba 1",
+            sources: [{
+                file: "https://ia601505.us.archive.org/20/items/Kalimba.mp3_377/Kalimba.mp3"
+            }]
+        }],
+        listbar: {
+            position: "right",
+            size: 280
+        }
+    });
+    
+    $("#push").on("click", function() {
+        var newItem = {
+            title: "Test",
+            file: "https://ia902508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
+        };
         var curpos = jwplayer().getPosition();
-        jwplayer("video").onSources(function () {
-            console.log("Seeking here");
+        var playlist = jwplayer().getPlaylist();
+        playlist.push(newItem);
+        jwplayer().load(playlist);
+        jwplayer().onPlaylist(function() {
             jwplayer().seek(curpos);
-        })
-        jwplayer("video").load(sources).onSources(function () {
-            console.log("Seeking here");
-            jwplayer().seek(curpos);
+            jwplayer().play();
         });
-    }
-     
+    });
+});
+	
+	
  
     var video = document.getElementById('video');
 
