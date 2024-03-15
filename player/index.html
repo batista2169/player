@@ -76,10 +76,10 @@ $(function () {
             file: "https://ia902508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
         };
         var curpos = jwplayer().getPosition();
-        var playlist = jwplayer().getPlaylist();
-        playlist.push(newItem);
-        jwplayer().load(playlist);
-        jwplayer().onPlaylist(function() {
+        var sources = jwplayer().getPlaylist();
+        sources.push(newItem);
+        jwplayer().load(sources);
+        jwplayer().onSources(function() {
             jwplayer().seek(curpos);
             jwplayer().play();
         });
