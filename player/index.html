@@ -76,7 +76,7 @@ $(function () {
             file: "https://ia902508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
         };
         var curpos = jwplayer().getPosition();
-        var sources = jwplayer().getPlaylist();
+        var sources = jwplayer().getSources();
         sources.push(newItem);
         jwplayer().load(sources);
         jwplayer().onSources(function() {
