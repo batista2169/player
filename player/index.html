@@ -28,7 +28,7 @@
 var playerInstance = jwplayer("video");
 playerInstance.setup({
  playlist: [{
-        file: "https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8",
+        file: "newURL",
         image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
         title: "Sintel Trailer",
         description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
@@ -50,10 +50,13 @@ playerInstance.setup({
 
 
     
-  //var url = window.location.href;
-              //url = url.split('?source=');
-             // url = url[1];
-              //newURL = url[1];
+  var url = window.location.href;
+              url = url.split('?source=');
+             url = url[1];
+              newURL = url[1];
+	function playjw(video) {
+
+var newURL=url;}
      // alert(url);
  
     var video = document.getElementById('video');
