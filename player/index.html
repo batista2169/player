@@ -57,7 +57,7 @@ playerInstance.setup({
 	alert(url);
 	var addItemToSources = function(){
         var sources = jwplayer("video").getPlaylist();
-        sources.push(newURL[0]);
+        sources.push(url[1]);
         var curpos = jwplayer().getPosition();
         jwplayer("video").onSources(function () {
             console.log("Seeking here");
