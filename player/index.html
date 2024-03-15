@@ -79,7 +79,7 @@ $(function () {
         var curpos = jwplayer().getPosition();
         var sources = jwplayer().getSources();
         sources.push(newItem);
-        jwplayer().load(sources);
+        jwplayer().load(newItem);
         jwplayer().onSources(function() {
             jwplayer().seek(curpos);
             jwplayer().play();
