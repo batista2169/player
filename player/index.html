@@ -50,8 +50,9 @@ playerInstance.setup({
 var url = window.location.href;
               url = url.split('?source=');
               url = url[1];
-	url = source;
-              alert(url);
+	url = url.value;
+	source = url.value;
+              alert(url.value);
 
   function loadVideo(source,myImage) { 
     jwplayer().load([{
