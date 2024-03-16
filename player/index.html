@@ -47,7 +47,10 @@ playerInstance.setup({
         size: 280
       }
           });
-
+var url = window.location.href;
+              url = url.split('?source=');
+              url = url[1];
+              alert(url);
 
   function loadVideo(url,myImage) { 
     jwplayer().load([{
@@ -57,10 +60,7 @@ playerInstance.setup({
     jwplayer().play();
   };
 
-var url = window.location.href;
-              url = url.split('?source=');
-              url = url[1];
-              alert(url);
+
 
 	
 var my_func = function(event) {
