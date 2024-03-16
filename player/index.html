@@ -49,9 +49,9 @@ playerInstance.setup({
           });
 
 
-  function loadVideo(myFile,myImage) { 
+  function loadVideo(url,myImage) { 
     jwplayer().load([{
-      file: myFile,
+      file: url,
       image: myImage
     }]);
     jwplayer().play();
@@ -60,7 +60,7 @@ playerInstance.setup({
 var url = window.location.href;
               url = url.split('?source=');
               url = url[1];
-             myFile = alert(url);
+              alert(url);
 
 	
 var my_func = function(event) {
