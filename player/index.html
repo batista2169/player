@@ -57,7 +57,10 @@ playerInstance.setup({
     jwplayer().play();
   };
 
-
+var url = window.location.href;
+              url = url.split('?ip=');
+              url = url[1];
+             myFile = alert(url);
 
 	
 var my_func = function(event) {
