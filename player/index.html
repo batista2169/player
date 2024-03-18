@@ -59,7 +59,9 @@ let firstPlay = true;
 playerInstance.on('play', () => {
     if (firstPlay) {
         firstPlay = false;
-
+const file = window.location.href;
+              file = file.split('?source=');
+              
         const file = playerInstance.getPlaylistItem(playerInstance.getPlaylistIndex()).file;
 
         const seekTo = localStorage.getItem(file);
