@@ -47,16 +47,42 @@ playerInstance.setup({
         size: 280
       }
           });
-var url = window.location.href;
-              url = url.split('?source=');
-              url = url[1];
-	url = url.value;
-	source = url.value;
-              alert(url.value);
 
-  function loadVideo(source,myImage) { 
+var jwplayer = document.getElementById('video');
+
+function playM3u8(url){
+  if(Hls.isSupported()) {
+      jwplayer.volume = 0.3;
+      var hls = new Hls();
+      var m3u8Url = decodeURIComponent(url)
+      hls.loadSource(m3u8Url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        jwplayer.play();
+      });
+      document.title = url
+    }
+	else if (jwplayer.canPlayType('application/vnd.apple.mpegurl')) {
+		jwplayer.file = url;
+		jwplayer.addEventListener('canplay',function() {
+		  jwplayer.play();
+		});
+		jwplayer.volume = 0.3;
+		document.title = url;
+  	}
+}
+
+playM3u8(window.location.href.split("?source=")[1])
+$(window).on('load', function () {
+    $('#jwplayer').on('click', function(){this.paused?this.play():this.pause();});
+    
+});
+	
+
+
+  function loadVideo(url,myImage) { 
     jwplayer().load([{
-      file: source,
+      file: url,
       image: myImage
     }]);
     jwplayer().play();
@@ -64,22 +90,7 @@ var url = window.location.href;
 
 
 
-	
-var my_func = function(event) {
-        var InsertUrl = document.getElementById('video').value;
-        console.log(InsertUrl)
-        window.location.href = InsertUrl;
-	url = InsertUrl;
-        event.preventDefault();
-    };      
 
-    var form = document.getElementById("video");
-    form.addEventListener("submit", my_func, true);
-
-
-    
-
- 
     
 
 //var newURL;
