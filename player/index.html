@@ -48,16 +48,17 @@ playerInstance.setup({
       }
           });
 
+const url = window.location.href;
+url = url.split('?source=');
+	
+document.getElementById('btn-buscar').onclick = function() {
+  let q = document.getElementById('txtbusca');
+  let myurl = url.value;
+  /* window.location.url = videoList; */
+  console.log(myurl);
+};
 
-
-	jwplayer('video').onPlay(function(event) {
-  index = jwplayer('video').getPlaylistIndex();
-  item = jwplayer('video').getPlaylistItem(index);
-  window.location.href = item.site
-		var url = window.location.href;
-              url = url.split('?source=');
-              url = url[1];
-});
+	
 
   function loadVideo(myurl,myImage) { 
     jwplayer().load([{
@@ -67,15 +68,7 @@ playerInstance.setup({
     jwplayer().play();
   };
 
-const url = window.location.href;
-url = url.split('?source=');
-	url = url[1];
-document.getElementById('btn-buscar').onclick = function() {
-  let q = document.getElementById('txtbusca');
-  let myurl = url.value;
-  /* window.location.url = videoList; */
-  console.log(myurl);
-};
+
 
 
 
