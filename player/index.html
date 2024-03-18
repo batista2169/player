@@ -48,26 +48,15 @@ playerInstance.setup({
       }
           });
 
-playerInstance.on('seeked', () => {
-    const file = playerInstance.getPlaylistItem(playerInstance.getPlaylistIndex()).file;
 
-    localStorage.setItem(file, playerInstance.getPosition());
-});
-	
-let firstPlay = true;
 
-playerInstance.on('play', () => {
-    if (firstPlay) {
-        firstPlay = false;
-const file = window.location.href;
-              file = file.split('?source=');
-              
-        const file = playerInstance.getPlaylistItem(playerInstance.getPlaylistIndex()).file;
-
-        const seekTo = localStorage.getItem(file);
-
-        if (seekTo) playerInstance.seek(seekTo);
-    }
+	jwplayer('video').onPlay(function(event) {
+  index = jwplayer('video').getPlaylistIndex();
+  item = jwplayer('video').getPlaylistItem(index);
+  window.location.href = item.site
+		var url = window.location.href;
+              url = url.split('?source=');
+              url = url[1];
 });
 
   function loadVideo(url,myImage) { 
