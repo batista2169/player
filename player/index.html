@@ -48,9 +48,25 @@ playerInstance.setup({
       }
           });
 
+playerInstance.on('seeked', () => {
+    const file = playerInstance.getPlaylistItem(playerInstance.getPlaylistIndex()).file;
 
+    localStorage.setItem(file, playerInstance.getPosition());
+});
 	
+let firstPlay = true;
 
+playerInstance.on('play', () => {
+    if (firstPlay) {
+        firstPlay = false;
+
+        const file = playerInstance.getPlaylistItem(playerInstance.getPlaylistIndex()).file;
+
+        const seekTo = localStorage.getItem(file);
+
+        if (seekTo) playerInstance.seek(seekTo);
+    }
+});
 
   function loadVideo(url,myImage) { 
     jwplayer().load([{
