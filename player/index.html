@@ -28,7 +28,7 @@
 var playerInstance = jwplayer("video");
 playerInstance.setup({
  sources: [{
-        file: "",
+        file: "https://d1r94zrwa3gnlo.cloudfront.net/livestore103/stream/hls/290/290.m3u8",
         image: "http://assets-jp.jwpsrv.com/thumbs/3XnJSIm4-640.jpg",
         title: "Sintel Trailer",
         description: "Sintel is a fantasy CGI movie from the Blender Open Movie Project."
@@ -57,40 +57,6 @@ jwplayer().load(playlist);
 jwplayer().play(true);
 
 
-function loadVideo(url,myImage) { 
-    jwplayer().load([{
-      file: url,
-      image: myImage
-    }]);
-    jwplayer().play();
-  };
 	
-
-
-
-
-
-
-
-    
-
-//var newURL;
-//javascript codes here
-//document.write(newURL); //will output something like this - https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8
-
-</script>
-<input type="text" name="txtbusca" id="txtbusca" placeholder="">
-<button id="btn-buscar">Buscar</button> 
-	<li><a href="javascript:loadVideo('https://stream.live.novotempo.com/tv/smil:tvnovotempo.smil/chunklist_slpor.m3u8','image1.jpg')">Video 1</a></li>
-<li><a href="javascript:loadVideo('https://ia601505.us.archive.org/20/items/Kalimba.mp3_377/Kalimba.mp3','image2.jpg')">Video 2</a></li>
-<li><a href="javascript:loadVideo('https://d1r94zrwa3gnlo.cloudfront.net/livestore102/stream/hls/282/282.m3u8','image3.jpg')">Video 3</a></li>
-	<form id="formulario">
-        <div>
-            <input type="text" placeholder="Insert your URL"   id="video">
-            <input  type="submit" value="Start">
-        </div>
-</form>
-<div id="video"></div>
-<button id="push">Push to playlist</button>
 </body>
 </html>
