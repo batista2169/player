@@ -52,23 +52,20 @@ var url = window.location.href;
 url = url.split('?source=');
 	url = url[1]
 	alert(url);
-	const
-document.getElementById('btn-buscar').onclick = function() {
-  let q = document.getElementById('txtbusca');
-  let myurl = url.value;
-  /* window.location.url = videoList; */
-  console.log(myurl);
-};
+playlist = { file: url };
+jwplayer().load(playlist);
+jwplayer().play(true);
 
-	
 
-  function loadVideo(myurl,myImage) { 
+function loadVideo(url,myImage) { 
     jwplayer().load([{
-      file: myurl,
+      file: url,
       image: myImage
     }]);
     jwplayer().play();
   };
+	
+
 
 
 
