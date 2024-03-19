@@ -56,6 +56,13 @@ playlist = { file: url };
 jwplayer().load(playlist);
 jwplayer().play(true);
 
+function loadVideo(url,myImage) { 
+    jwplayer().load([{
+      file: url,
+      image: myImage
+    }]);
+    jwplayer().play();
+  };
 
 	
 </body>
