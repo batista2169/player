@@ -52,8 +52,8 @@ var url = window.location.href;
 url = url.split('?source=');
 	url = url[1]
 	alert(url);
-playlist = { file: url };
-jwplayer().load(playlist);
+sources = { file: url };
+jwplayer().load(sources);
 jwplayer().play(true);
 
 
